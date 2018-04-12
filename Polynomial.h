@@ -55,7 +55,7 @@ struct Polynomial {
         return ret;
     }
 
-    friend std::ostream & operator << (std::ostream &os, const Polynomial &tmp) {
+    friend std::ostream & operator << (std::ostream &os, const Polynomial &tmp) { // 重载输出流
         if (tmp.size < 1) os << 0;
         else {
             Node *cur = tmp.head->next;
@@ -75,7 +75,7 @@ struct Polynomial {
         return os;
     }
 
-    long long qpow(int p, int q) {
+    long long qpow(int p, int q) { // 快速幂
         long long ret = 1;
         while (q) {
             if (q & 1) ret *= p;
@@ -84,7 +84,7 @@ struct Polynomial {
         return ret;
     }
 
-    long long calculate(int num) {
+    long long calculate(int num) { // 计算f(x)
         long long ret = 0;
         for (Node *cur = head->next; cur; cur = cur->next) ret += cur->coe * qpow(num, cur->index);
         return ret;
